@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://josetelmo.github.io/test/sitemap/sitemap.xml
