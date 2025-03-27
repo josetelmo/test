@@ -11,7 +11,7 @@ O conteúdo é organizado em:
 - ✅ Vantagens do GitHub Pages
 - 🛠️ Passo a passo completo (com links e exemplos)
 - 💡 Dicas úteis de templates, personalização e domínio próprio
-- 🧠 Recursos extras como uso de Jekyll e GitHub Actions
+
 
 ## 🚀 Acesse a página
 
