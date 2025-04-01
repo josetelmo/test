@@ -1,4 +1,4 @@
-# Guia Completo: Criando sua Página com GitHub Pages
+# Guia: Criando sua Página com GitHub Pages
 
 Este site apresenta um conteúdo completo e atualizado sobre as vantagens de utilizar o **GitHub Pages** e um passo a passo detalhado para criar sua própria página, totalmente gratuita.
 
