@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://josetelmo.github.io/test/sitemap/sitemap.xml
+Sitemap: https://aprendacomjosetelmo.com.br/sitemap.xml
