@@ -17,3 +17,5 @@ O conteúdo é organizado em:
 
 Você pode visualizar a versão publicada do site acessando:
 
+
+O visual foi atualizado para utilizar o framework Bootstrap para estilos modernos e responsivos.
