@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de E-commerce</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 2rem;
+    }
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #0366d6;
+    }
+    .question {
+      margin-bottom: 1rem;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+    }
+    .result {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Quiz de E-commerce</h1>
+    <div id="quiz"></div>
+    <div id="result" class="result"></div>
+  </div>
+  <script>
+    const quizData = [
+      {
+        question: "O que significa \"checkout\" em um site de e-commerce?",
+        options: [
+          "Página de pagamento e finalização de compra",
+          "Página de catálogo de produtos",
+          "Ferramenta para suporte ao cliente",
+          "Sistema de marketing por e-mail"
+        ],
+        answer: 0
+      },
+      {
+        question: "Qual é a principal vantagem do carrinho de compras virtual?",
+        options: [
+          "Permitir adicionar produtos e finalizar a compra depois",
+          "Reduzir o preço dos itens selecionados",
+          "Oferecer frete gratuito automaticamente",
+          "Aumentar o número de parcelas do pagamento"
+        ],
+        answer: 0
+      },
+      {
+        question: "O que é 'frete' em e-commerce?",
+        options: [
+          "Taxa de armazenamento dos produtos",
+          "Custo de envio dos produtos ao cliente",
+          "Imposto sobre vendas digitais",
+          "Desconto aplicado automaticamente"
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual ferramenta ajuda a acompanhar a performance de vendas em um site?",
+        options: [
+          "Google Analytics",
+          "MS Paint",
+          "Windows Media Player",
+          "Bloco de Notas"
+        ],
+        answer: 0
+      },
+      {
+        question: "O que significa 'marketplace'?",
+        options: [
+          "Loja que vende apenas um tipo de produto",
+          "Plataforma que reúne vários vendedores e produtos",
+          "Sistema de gerenciamento de estoque",
+          "Ferramenta de marketing de afiliados"
+        ],
+        answer: 1
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    const quizEl = document.getElementById('quiz');
+    const resultEl = document.getElementById('result');
+
+    function showQuestion() {
+      if (currentQuestion >= quizData.length) {
+        quizEl.innerHTML = '';
+        resultEl.innerHTML = `Você acertou ${score} de ${quizData.length} questões!<br><a href="index.html">Voltar à página inicial</a>`;
+        return;
+      }
+      const q = quizData[currentQuestion];
+      const optionsHtml = q.options
+        .map((opt, index) => `<button class="option-btn" data-index="${index}">${opt}</button>`)
+        .join('');
+      quizEl.innerHTML = `<div class="question"><h2>${q.question}</h2></div><div class="options">${optionsHtml}</div>`;
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', () => selectAnswer(Number(btn.dataset.index)));
+      });
+    }
+
+    function selectAnswer(selected) {
+      if (selected === quizData[currentQuestion].answer) {
+        score++;
+      }
+      currentQuestion++;
+      showQuestion();
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>
