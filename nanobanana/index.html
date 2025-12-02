@@ -21,12 +21,13 @@
 body {
     background-color: #525659;
     margin: 0;
-    padding: 40px 0;
+    padding: 40px 0 100px 0; /* Ajustado para dar espaço aos botões flutuantes */
     font-family: 'Roboto', sans-serif;
     color: #202124;
     text-align: center;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    scroll-behavior: smooth;
 }
 
 /* 2. SLIDE CONTAINER */
@@ -285,7 +286,51 @@ p, li {
     font-weight: 700;
 }
 
-/* 10. PRINT BUTTON */
+/* 10. ESTILOS DE NAVEGAÇÃO ADICIONADOS */
+.fab-container {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-buttons {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    display: flex;
+    gap: 20px;
+    pointer-events: auto;
+    backdrop-filter: blur(5px);
+}
+
+.nav-btn {
+    background-color: #f1f3f4;
+    color: #202124;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 20px;
+    border: 1px solid #dadce0;
+}
+
+.nav-btn:hover {
+    background-color: #1a73e8;
+    color: white;
+    transform: scale(1.1);
+    border-color: #1a73e8;
+}
+
 .print-btn {
     position: fixed;
     bottom: 30px;
@@ -327,7 +372,7 @@ p, li {
         height: 100%; 
     }
 
-    .print-btn {
+    .print-btn, .fab-container {
         display: none;
     }
 
@@ -341,9 +386,71 @@ p, li {
         function printPDF() {
             window.print();
         }
+
+        // LÓGICA DE NAVEGAÇÃO
+        function navigate(direction) {
+            const slides = document.querySelectorAll('.slide-container');
+            // Encontra o slide atualmente mais visível
+            let currentIndex = 0;
+            let minDistance = Infinity;
+
+            slides.forEach((slide, index) => {
+                const rect = slide.getBoundingClientRect();
+                // Usa valor absoluto da distância do topo, mas com tolerância
+                const distance = Math.abs(rect.top - 40); 
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    currentIndex = index;
+                }
+            });
+
+            let targetIndex = currentIndex + direction;
+
+            // Limites
+            if (targetIndex < 0) targetIndex = 0;
+            if (targetIndex >= slides.length) targetIndex = slides.length - 1;
+
+            // Scroll Suave
+            slides[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Eventos de Teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown') {
+                e.preventDefault();
+                navigate(1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                navigate(-1);
+            }
+        });
+
+        // Image Fallback
+        function imgError(image, fallbackText) {
+            image.onerror = null;
+            image.src = `https://image.pollinations.ai/prompt/${encodeURIComponent(fallbackText)}?width=800&height=600&nologo=true`;
+            return true;
+        }
     </script>
 </head>
 <body>
+
+<!-- BOTÕES DE NAVEGAÇÃO -->
+<div class="fab-container">
+    <div class="nav-buttons">
+        <div class="nav-btn" onclick="navigate(-1)" title="Anterior (Seta Esquerda)">
+            <i class="fa-solid fa-arrow-left"></i>
+        </div>
+        <div class="nav-btn" onclick="navigate(1)" title="Próximo (Seta Direita)">
+            <i class="fa-solid fa-arrow-right"></i>
+        </div>
+    </div>
+</div>
+
+<!-- BOTÃO PDF -->
+<div class="print-btn" onclick="printPDF()">
+    <i class="fa-solid fa-print"></i> Salvar como PDF
+</div>
 
 <!-- SLIDE 1: COVER -->
 <div class="slide-container">
@@ -369,7 +476,7 @@ p, li {
                 </div>
                 <div class="collage-item">
                     <img src="http://googleusercontent.com/image_generation_content/12" 
-                         onerror="this.src='https://image.pollinations.ai/prompt/motorcycle%20entirely%20made%20of%20sharks%20hammerhead%20wheels%20photorealistic?width=800&height=600&nologo=true'"
+                         onerror="imgError(this, 'motorcycle entirely made of sharks hammerhead wheels photorealistic')"
                          alt="Mota Tubarão">
                 </div>
                 <div class="collage-item">
@@ -424,7 +531,7 @@ p, li {
             <div class="image-column">
                 <div class="img-frame">
                     <img src="http://googleusercontent.com/image_generation_content/7" 
-                         onerror="this.src='https://image.pollinations.ai/prompt/grainy%20cctv%20footage%20night%20vision%20street%20view%20convenience%20store?width=800&height=600&nologo=true'"
+                         onerror="imgError(this, 'grainy cctv footage night vision street view convenience store')"
                          alt="CCTV Footage">
                     <div class="caption">Figura 1.1: Vigilância de rua (ponto de vista elevado)</div>
                 </div>
@@ -458,7 +565,7 @@ p, li {
             <div class="image-column">
                 <div class="img-frame">
                     <img src="http://googleusercontent.com/image_generation_content/9" 
-                         onerror="this.src='https://image.pollinations.ai/prompt/TV%20screen%20showing%20news%20broadcast%20headline%20ELECTION%20RESULTS%20photorealistic?width=800&height=600&nologo=true'"
+                         onerror="imgError(this, 'TV screen showing news broadcast headline ELECTION RESULTS photorealistic')"
                          alt="Interface TV News">
                     <div class="caption">Figura 1.2: Integração de texto (Cuidado com Desinformação)</div>
                 </div>
@@ -604,7 +711,7 @@ p, li {
             <div class="image-column">
                 <div class="img-frame">
                     <img src="http://googleusercontent.com/image_generation_content/12" 
-                         onerror="this.src='https://image.pollinations.ai/prompt/motorcycle%20entirely%20made%20of%20sharks%20hammerhead%20wheels%20photorealistic?width=800&height=600&nologo=true'"
+                         onerror="imgError(this, 'motorcycle entirely made of sharks hammerhead wheels photorealistic')"
                          alt="Mota Tubarão">
                     <div class="caption">Figura 3.1: Exemplo de fusão orgânica e mecânica</div>
                 </div>
