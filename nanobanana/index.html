@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+	<title>Nano Banana Pro: O Guia Visual - Edição Final</title>
+	<link rel="icon" href="https://twemoji.maxcdn.com/v/latest/svg/1f34c.svg" type="image/svg+xml">
+	<!-- O código 1f34c é o código Unicode do emoji de banana -->
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Google+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. RESET & BASE */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #525659;
+    margin: 0;
+    padding: 40px 0;
+    font-family: 'Roboto', sans-serif;
+    color: #202124;
+    text-align: center;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* 2. SLIDE CONTAINER */
+.slide-container {
+    width: 1280px;
+    height: 720px;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    display: block; 
+    margin: 0 auto 60px auto;
+    text-align: left;
+    page-break-after: always;
+    break-after: page;
+}
+
+/* 3. TYPOGRAPHY */
+h1, h2, h3, h4 {
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+    margin: 0;
+    font-weight: 500;
+    color: #202124;
+}
+
+h1 {
+    font-size: 64px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 42px;
+    margin-bottom: 24px;
+    color: #202124;
+}
+
+h3 {
+    font-size: 24px;
+    color: #5f6368;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+p, li {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #5f6368;
+    margin-bottom: 16px;
+}
+
+/* 4. LAYOUT UTILITIES */
+.padding-layer {
+    padding: 60px 80px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    height: 100%;
+    align-items: center;
+}
+
+.content-left {
+    padding-right: 20px;
+}
+
+.image-column {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-frame {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    border: 1px solid #dadce0;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.caption {
+    font-size: 14px;
+    color: #70757a;
+    margin-top: 8px;
+    text-align: center;
+    font-style: italic;
+    width: 100%;
+}
+
+/* 5. PROMPT BOX */
+.prompt-box {
+    background-color: #f1f3f4;
+    border-left: 4px solid #1a73e8;
+    padding: 24px;
+    border-radius: 0 8px 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: #3c4043;
+    margin-top: 20px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+.prompt-label {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #1a73e8;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+/* 6. HEADER & FOOTER */
+.page-header {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    font-size: 14px;
+    color: #9aa0a6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.page-number {
+    position: absolute;
+    bottom: 40px;
+    right: 80px;
+    font-size: 16px;
+    color: #9aa0a6;
+    font-weight: 500;
+}
+
+.brand-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
+}
+
+/* 7. TITLE SLIDE COLLAGE */
+.title-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    height: 100%;
+    align-items: center;
+}
+
+.collage-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    height: 400px;
+    width: 100%;
+}
+
+.collage-item {
+    background-color: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-block {
+    margin-top: 40px;
+    border-left: 4px solid #1a73e8;
+    padding-left: 20px;
+}
+
+.author-name {
+    font-weight: 700;
+    color: #202124;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.author-title {
+    font-size: 16px;
+    color: #5f6368;
+}
+
+/* 8. WARNING BOX */
+.warning-box {
+    background-color: #fce8e6;
+    border-left: 4px solid #ea4335;
+    padding: 16px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.warning-title {
+    color: #c5221f;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.warning-text {
+    color: #3c4043;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* 9. SECTION SLIDE */
+.section-slide {
+    background-color: #1a73e8;
+    color: white;
+}
+
+.section-slide h1, .section-slide p {
+    color: white;
+}
+
+.section-number {
+    font-size: 120px;
+    opacity: 0.2;
+    position: absolute;
+    right: 40px;
+    bottom: -20px;
+    font-weight: 700;
+}
+
+/* 10. PRINT BUTTON */
+.print-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #1a73e8;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.print-btn:hover {
+    transform: scale(1.05);
+    background-color: #1557b0;
+}
+
+/* 11. PRINT MEDIA QUERY */
+@media print {
+    body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+    }
+
+    .slide-container {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+        width: 100%;
+        height: 100%; 
+    }
+
+    .print-btn {
+        display: none;
+    }
+
+    @page {
+        size: 1280px 720px;
+        margin: 0;
+    }
+}
+    </style>
+    <script>
+        function printPDF() {
+            window.print();
+        }
+    </script>
+</head>
+<body>
+
+<!-- SLIDE 1: COVER -->
+<div class="slide-container">
+    <div class="brand-accent"></div>
+    <div class="padding-layer">
+        <div class="title-grid">
+            <div class="title-content">
+                <h3 style="color: #1a73e8; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px;">Prompt Engineering Guide</h3>
+                <h1>O Livro do<br>Nano Banana Pro</h1>
+                <p style="font-size: 22px; max-width: 600px; margin-top: 20px;">
+                    Um manual técnico e visual sobre as capacidades avançadas do modelo Gemini 3 Pro Image.
+                </p>
+                <div class="author-block">
+                    <span class="author-title">Organização:</span><br>
+                    <span class="author-name">Prof. José Telmo</span>
+                    <br>
+                    <span class="author-title">Baseado na Curadoria Muset AI</span>
+                </div>
+            </div>
+            <div class="collage-container">
+                <div class="collage-item" style="grid-row: span 2;">
+                    <img src="https://image.pollinations.ai/prompt/surreal%20explosion%20of%20colorful%20ideas%20abstract%20art%20high%20quality?width=800&height=600&nologo=true" alt="Arte Surrealista">
+                </div>
+                <div class="collage-item">
+                    <img src="http://googleusercontent.com/image_generation_content/12" 
+                         onerror="this.src='https://image.pollinations.ai/prompt/motorcycle%20entirely%20made%20of%20sharks%20hammerhead%20wheels%20photorealistic?width=800&height=600&nologo=true'"
+                         alt="Mota Tubarão">
+                </div>
+                <div class="collage-item">
+                    <img src="https://image.pollinations.ai/prompt/technical%20vector%20blueprint%20diagram%20of%20V8%20engine%20parts%20exploded%20view?width=800&height=600&nologo=true" alt="Diagrama Técnico">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">1</div>
+</div>
+
+<!-- SLIDE 2: TOC -->
+<div class="slide-container">
+    <div class="page-header">Índice</div>
+    <div class="padding-layer">
+        <h2>Conteúdo</h2>
+        <ul class="toc-list" style="list-style: none; padding: 0; margin-top: 30px;">
+            <li style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e8eaed; font-size: 20px;"><span>01. Fotorrealismo e Imperfeições</span> <span>03</span></li>
+            <li style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e8eaed; font-size: 20px;"><span>02. Texto, Lógica e Ciência</span> <span>07</span></li>
+            <li style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e8eaed; font-size: 20px;"><span>03. Criatividade e Surrealismo</span> <span>11</span></li>
+            <li style="display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e8eaed; font-size: 20px;"><span>04. Conclusão</span> <span>15</span></li>
+        </ul>
+    </div>
+    <div class="page-number">2</div>
+</div>
+
+<!-- SLIDE 3: SECTION 1 -->
+<div class="slide-container section-slide">
+    <div class="padding-layer" style="justify-content: center;">
+        <h3>Capítulo 01</h3>
+        <h1>Fotorrealismo e<br>Imperfeições</h1>
+        <p style="max-width: 600px; color: rgba(255,255,255,0.8);">
+            A perfeição na geração de imagem muitas vezes reside nas falhas. O Nano Banana Pro destaca-se ao replicar ruído, distorção e estéticas "low-fi".
+        </p>
+    </div>
+    <div class="section-number">01</div>
+</div>
+
+<!-- SLIDE 4: CCTV OUTSIDE -->
+<div class="slide-container">
+    <div class="page-header">Fotorrealismo</div>
+    <div class="padding-layer">
+        <div class="two-column">
+            <div class="content-left">
+                <h2>Estética de Vigilância (Externa)</h2>
+                <p>Simulação de uma câmara de segurança posicionada no segundo andar. A perspectiva aérea e o grão da imagem aumentam a credibilidade da cena como um registo documental real.</p>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt</span>
+                    "CCTV footage view from second floor looking down at street outside convenience store. Grainy, low quality, timestamp '02:14:55', night vision mode, blurry motion of a passing car."
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="img-frame">
+                    <img src="http://googleusercontent.com/image_generation_content/7" 
+                         onerror="this.src='https://image.pollinations.ai/prompt/grainy%20cctv%20footage%20night%20vision%20street%20view%20convenience%20store?width=800&height=600&nologo=true'"
+                         alt="CCTV Footage">
+                    <div class="caption">Figura 1.1: Vigilância de rua (ponto de vista elevado)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">4</div>
+</div>
+
+<!-- SLIDE 5: TV & ETHICS -->
+<div class="slide-container">
+    <div class="page-header">Texto em Imagem</div>
+    <div class="padding-layer">
+        <div class="two-column">
+            <div class="content-left">
+                <h2>Transmissões Televisivas</h2>
+                <p>O modelo gera interfaces de notícias convincentes. Contudo, esta capacidade exige responsabilidade redobrada.</p>
+                
+                <div class="warning-box">
+                    <div class="warning-title"><i class="fa-solid fa-triangle-exclamation"></i> Ética e Responsabilidade</div>
+                    <p class="warning-text">
+                        O fotorrealismo extremo facilita a criação de <strong>Fake News</strong> e desinformação visual. Ao usar prompts jornalísticos, certifique-se de adicionar marcas d'água ou metadados que identifiquem a imagem como gerada por IA.
+                    </p>
+                </div>
+
+                <div class="prompt-box" style="margin-top: 15px;">
+                    <span class="prompt-label">Prompt</span>
+                    "A photo of a TV screen showing a CNN breaking news broadcast. Headline: 'ELECTION RESULTS'. Professional studio lighting."
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="img-frame">
+                    <img src="http://googleusercontent.com/image_generation_content/9" 
+                         onerror="this.src='https://image.pollinations.ai/prompt/TV%20screen%20showing%20news%20broadcast%20headline%20ELECTION%20RESULTS%20photorealistic?width=800&height=600&nologo=true'"
+                         alt="Interface TV News">
+                    <div class="caption">Figura 1.2: Integração de texto (Cuidado com Desinformação)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">5</div>
+</div>
+
+<!-- SLIDE 6: CONDUCTOR POV -->
+<div class="slide-container">
+    <div class="page-header">Perspectiva e Detalhe</div>
+    <div class="padding-layer">
+        <div class="two-column">
+            <div class="content-left">
+                <h2>POV: Olhos do Maestro</h2>
+                <p>A imersão visual é testada através da perspectiva em primeira pessoa. Aqui, vemos o que o maestro vê: a partitura em primeiro plano e os músicos à espera do comando.</p>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt</span>
+                    "First person view (POV) from a conductor's eyes looking at a full orchestra in a concert hall. Music stand with sheet music in bottom foreground. Depth of field."
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="img-frame">
+                    <img src="https://image.pollinations.ai/prompt/orchestra%20conductor%20pov%20hands%20holding%20baton%20concert%20hall%20photorealistic?width=800&height=600&nologo=true" alt="Visão do Maestro">
+                    <div class="caption">Figura 1.3: Perspectiva imersiva (POV)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">6</div>
+</div>
+
+<!-- SLIDE 7: SECTION 2 -->
+<div class="slide-container section-slide" style="background-color: #0F9D58;">
+    <div class="padding-layer" style="justify-content: center;">
+        <h3>Capítulo 02</h3>
+        <h1>Texto, Lógica<br>e Ciência</h1>
+        <p style="max-width: 600px; color: rgba(255,255,255,0.8);">
+            O teste definitivo de "raciocínio" visual. A capacidade de gerar diagramas técnicos, equações e texto lógico.
+        </p>
+    </div>
+    <div class="section-number">02</div>
+</div>
+
+<!-- SLIDE 8: CHALKBOARD -->
+<div class="slide-container">
+    <div class="page-header">Lógica Complexa</div>
+    <div class="padding-layer">
+        <div class="two-column">
+            <div class="content-left">
+                <h2>O Teste do Quadro-Negro</h2>
+                <p>Gerar equações matemáticas legíveis, organizadas como uma aula universitária real. O modelo deve compreender a sintaxe matemática visual e aplicá-la numa superfície texturizada.</p>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt</span>
+                    "A dusty green chalkboard in an old university classroom. Written in white chalk are complex calculus equations. The handwriting is messy but legible. Cinematic lighting."
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="img-frame">
+                    <img src="https://image.pollinations.ai/prompt/green%20chalkboard%20with%20complex%20calculus%20equations%20written%20in%20chalk%20classroom?width=800&height=600&nologo=true" alt="Quadro Negro">
+                    <div class="caption">Figura 2.1: Renderização de notação matemática complexa</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">8</div>
+</div>
+
+<!-- SLIDE 9: DIAGRAM -->
+<div class="slide-container">
+    <div class="page-header">Diagramas Técnicos</div>
+    <div class="padding-layer">
+        <div class="two-column">
+            <div class="content-left">
+                <h2>Ilustração Técnica Vetorial</h2>
+                <p>O Nano Banana Pro serve como uma ferramenta de design técnico. Este prompt gera um estilo de "blueprint" limpo, mantendo a coerência mecânica das peças.</p>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt</span>
+                    "A clean, vector-style technical diagram of a V8 engine on a white background. Parts are exploded view. Labels with lines pointing to pistons. Blueprint aesthetic blue lines."
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="img-frame">
+                    <img src="https://image.pollinations.ai/prompt/technical%20vector%20blueprint%20diagram%20of%20V8%20engine%20parts%20exploded%20view?width=800&height=600&nologo=true" alt="Diagrama Motor V8">
+                    <div class="caption">Figura 2.2: Estilo de ilustração técnica</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">9</div>
+</div>
+
+<!-- SLIDE 10: MONOLITH -->
+<div class="slide-container">
+    <div class="page-header">Texto Digital e Ambiente</div>
+    <div class="padding-layer">
+        <div class="two-column">
+            <div class="content-left">
+                <h2>O Monólito de Erro</h2>
+                <p>Um teste de contraste entre ambiente orgânico (deserto) e digital (glitch). O desafio é manter o texto de erro ("PROMPT OVERLOAD") legível enquanto aplica efeitos de distorção.</p>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt</span>
+                    "Dystopian, arid desert landscape leading to a rusted tech scrap pile with a flickering digital monolith. The monolith displays: 'PROMPT OVERLOAD: Error 404 Imagination Not Found'."
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="img-frame">
+                    <img src="https://image.pollinations.ai/prompt/glowing%20digital%20monolith%20in%20a%20desert%20error%20text%20glitch%20photorealistic?width=800&height=600&nologo=true" alt="Monólito Digital">
+                    <div class="caption">Figura 2.3: Integração de texto digital em ambiente 3D</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">10</div>
+</div>
+
+<!-- SLIDE 11: SECTION 3 -->
+<div class="slide-container section-slide" style="background-color: #F4B400;">
+    <div class="padding-layer" style="justify-content: center;">
+        <h3>Capítulo 03</h3>
+        <h1>Criatividade e<br>Surrealismo</h1>
+        <p style="max-width: 600px; color: rgba(255,255,255,0.9);">
+            Testes de fusão de conceitos díspares para avaliar a flexibilidade semântica do modelo. Onde a lógica termina, começa a arte.
+        </p>
+    </div>
+    <div class="section-number">03</div>
+</div>
+
+<!-- SLIDE 12: SHARK MOTO -->
+<div class="slide-container">
+    <div class="page-header">Fusão Conceitual</div>
+    <div class="padding-layer">
+        <div class="two-column">
+            <div class="content-left">
+                <h2>Uma moto estilo Tubarão</h2>
+                <p>Um clássico "stress test". O desafio é fundir a <strong>forma</strong> mecânica da mota com a <strong>textura</strong> orgânica do tubarão, mantendo a coerência visual de ambos.</p>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt</span>
+                    "A full shot of a motorcycle that is entirely composed of sharks. The wheels are curled hammerhead sharks. Hyper-realistic, 8k resolution, cinematic lighting."
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="img-frame">
+                    <img src="http://googleusercontent.com/image_generation_content/12" 
+                         onerror="this.src='https://image.pollinations.ai/prompt/motorcycle%20entirely%20made%20of%20sharks%20hammerhead%20wheels%20photorealistic?width=800&height=600&nologo=true'"
+                         alt="Mota Tubarão">
+                    <div class="caption">Figura 3.1: Exemplo de fusão orgânica e mecânica</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">12</div>
+</div>
+
+<!-- SLIDE 13: PIGEONS PAINTING -->
+<div class="slide-container">
+    <div class="page-header">Surrealismo Abstrato</div>
+    <div class="padding-layer">
+        <div class="two-column">
+            <div class="content-left">
+                <h2>Caos Organizado (Pintura)</h2>
+                <p>A renderização de metáforas visuais complexas. O modelo deve transformar uma explosão energética em pássaros, mantendo a textura e pinceladas de uma pintura a óleo clássica.</p>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt</span>
+                    "Oil painting style. A surreal image of the Sun vigorously exploding into a flock of pigeons. Artistic, brush strokes visible, dramatic sky."
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="img-frame">
+                    <img src="https://image.pollinations.ai/prompt/oil%20painting%20sun%20exploding%20into%20flock%20of%20pigeons%20surreal?width=800&height=600&nologo=true" alt="Pintura Pombos">
+                    <div class="caption">Figura 3.2: Estilo Artístico/Pintura</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">13</div>
+</div>
+
+<!-- SLIDE 14: SURREAL SCALE (SNAIL) -->
+<div class="slide-container">
+    <div class="page-header">Escala e Física</div>
+    <div class="padding-layer">
+        <div class="two-column">
+            <div class="content-left">
+                <h2>O Caracol de Carga</h2>
+                <p><strong>Novo Caso:</strong> Um exercício de escala invertida. O modelo deve renderizar texturas realistas (concha, musgo, madeira da casa) enquanto viola as leis da física e proporção.</p>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt</span>
+                    "A giant realistic snail pulling a tiny suburban house through a mossy forest. The snail shell has windows. Macro photography feel but giant scale."
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="img-frame">
+                    <img src="https://image.pollinations.ai/prompt/giant%20snail%20pulling%20a%20tiny%20house%20in%20forest%20photorealistic?width=800&height=600&nologo=true" alt="Caracol Gigante">
+                    <div class="caption">Figura 3.3: Surrealismo de Escala</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-number">14</div>
+</div>
+
+<!-- SLIDE 15: BACK COVER -->
+<div class="slide-container" style="background-color: #202124;">
+    <div class="padding-layer" style="justify-content: center; align-items: center; text-align: center;">
+        <h1 style="color: #fff;">Obrigado</h1>
+        <p style="color: #9aa0a6; max-width: 600px; margin-top: 20px;">
+            Este documento serve como referência rápida para explorar as capacidades do Nano Banana Pro.
+        </p>
+        <div style="margin-top: 60px; border-top: 1px solid #5f6368; padding-top: 20px; color: #5f6368; font-size: 14px;">
+            Organização: Prof. José Telmo<br>
+            Muset AI Community © 2025
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
