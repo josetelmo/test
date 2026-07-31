@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia prático — IA para Avaliação, Engajamento e Consolidação da Aprendizagem</title>
+<style>
+  :root{
+    --paper:#F7F1E8;
+    --ink:#1C1917;
+    --blue:#C0522E;
+    --amber:#C0522E;
+    --amber-dark:#E28A5C;
+    --muted:#6E6659;
+    --rule:#E3D9CA;
+    --card:#EDE3D5;
+    --deep:#1C1917;
+    --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+
+  /* ---------- cabeçalho ---------- */
+  header{background:var(--deep);color:#fff;padding:56px 0 48px;margin-bottom:8px}
+  header .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber-dark);font-weight:700;margin:0 0 18px}
+  header h1{font-family:var(--serif);font-size:34px;line-height:1.12;margin:0 0 18px;font-weight:400;color:#B0A596}
+  header h1 b{display:block;font-size:47px;font-weight:700;color:#fff;letter-spacing:-.01em}
+  header p{margin:0 0 10px;color:#CFC5B5;max-width:62ch}
+  header .meta{font-size:14px;color:#9A8F7E;margin-top:24px}
+
+  /* ---------- navegação ---------- */
+  nav{background:#fff;border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:20}
+  nav ul{list-style:none;margin:0;padding:12px 0;display:flex;flex-wrap:wrap;gap:6px 20px}
+  nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:4px 0;border-bottom:2px solid transparent}
+  nav a:hover,nav a:focus{color:var(--blue);border-bottom-color:var(--amber)}
+
+  /* ---------- tipografia ---------- */
+  main{padding:44px 0 80px}
+  section{margin-bottom:64px;scroll-margin-top:70px}
+  h2{font-family:var(--serif);font-size:25px;line-height:1.18;margin:0 0 6px;font-weight:400;color:var(--muted)}
+  h2 b{display:block;font-size:37px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:0 0 28px;font-size:16px}
+  h3{font-family:var(--serif);font-size:22px;margin:34px 0 10px;font-weight:700}
+  h4{font-size:15px;margin:26px 0 8px;text-transform:uppercase;letter-spacing:.08em;color:var(--blue)}
+  p{margin:0 0 16px}
+  a{color:var(--blue)}
+  strong{font-weight:700}
+  ul.plain{padding-left:22px;margin:0 0 16px}
+  ul.plain li{margin-bottom:8px}
+
+  /* ---------- atividade ---------- */
+  .activity{border-top:3px solid var(--ink);padding-top:22px;margin-top:56px}
+  .actbar{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:8px}
+  .tag{background:var(--amber);color:var(--ink);font-size:11.5px;font-weight:800;
+       letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:4px}
+  .time{font-size:14px;color:var(--muted);font-weight:600}
+  .tool{font-size:14px;color:var(--blue);font-weight:600}
+
+  /* ---------- passos ---------- */
+  ol.steps{list-style:none;counter-reset:s;margin:22px 0 0;padding:0}
+  ol.steps>li{counter-increment:s;position:relative;padding:0 0 26px 52px;border-left:1px solid var(--rule);margin-left:15px}
+  ol.steps>li:last-child{border-left-color:transparent;padding-bottom:6px}
+  ol.steps>li::before{
+    content:counter(s);position:absolute;left:-15px;top:-2px;width:30px;height:30px;border-radius:50%;
+    background:var(--blue);color:#fff;font-size:14px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;font-family:var(--sans)
+  }
+  ol.steps>li .st{font-weight:700;display:block;margin-bottom:4px;font-size:17px}
+  ol.steps>li .sd{color:var(--muted);font-size:15.5px}
+  ol.steps>li .sd em{color:var(--ink);font-style:normal;font-weight:600}
+
+  /* ---------- prompt (elemento-assinatura) ---------- */
+  .prompt{background:var(--deep);border-radius:8px;margin:18px 0 22px;overflow:hidden}
+  .prompt .head{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:11px 16px;border-bottom:1px solid #463C34}
+  .prompt .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-dark);font-weight:800}
+  .prompt pre{margin:0;padding:18px 16px;font-family:var(--mono);font-size:13.5px;line-height:1.6;
+    color:#EADFCF;white-space:pre-wrap;word-break:break-word}
+  .prompt .fill{color:var(--amber-dark);font-weight:700}
+  .prompt .foot{padding:0 16px 16px;font-size:13px;color:#A99C8B}
+  button.copy{background:#3A322C;color:#EADFCF;border:0;border-radius:5px;padding:6px 13px;
+    font-family:var(--sans);font-size:12.5px;font-weight:700;cursor:pointer;white-space:nowrap}
+  button.copy:hover{background:var(--blue);color:#fff}
+  button.copy:focus-visible{outline:2px solid var(--amber-dark);outline-offset:2px}
+  button.copy.done{background:var(--amber-dark);color:var(--ink)}
+
+  /* ---------- caixas ---------- */
+  .box{background:var(--card);border-radius:8px;padding:20px 22px;margin:22px 0}
+  .box h4{margin-top:0}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .warn{background:#F2E4D6;border-radius:8px;padding:20px 22px;margin:22px 0}
+  .warn h4{color:#8E3E1E;margin-top:0}
+  .warn p:last-child,.warn ul:last-child{margin-bottom:0}
+  .quote{font-family:var(--serif);font-size:20px;font-style:italic;color:var(--blue);
+    margin:30px 0;padding-left:20px;border-left:3px solid var(--amber)}
+
+  /* ---------- listas de duas colunas ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:22px 0}
+  .grid .c{background:var(--card);border-radius:8px;padding:18px 20px}
+  .grid .c b{display:block;font-family:var(--serif);font-size:18px;margin-bottom:5px}
+  .grid .c span{color:var(--muted);font-size:15px}
+
+  /* ---------- checklist ---------- */
+  .check{list-style:none;padding:0;margin:18px 0}
+  .check li{margin-bottom:11px;display:flex;gap:11px;align-items:flex-start}
+  .check input{margin-top:6px;width:17px;height:17px;accent-color:var(--blue);flex-shrink:0}
+  .check label{font-size:16px}
+  .check .n{color:var(--muted);font-size:14.5px;display:block}
+
+  /* ---------- faq ---------- */
+  details{border-bottom:1px solid var(--rule);padding:14px 0}
+  details summary{cursor:pointer;font-weight:700;font-size:17px;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details summary::before{content:"+";color:var(--amber);font-weight:800;margin-right:10px}
+  details[open] summary::before{content:"–"}
+  details p{margin:12px 0 4px;color:var(--muted)}
+  details p:last-child{margin-bottom:0}
+
+  .autor-foto{
+    float:right;width:136px;height:136px;border-radius:50%;object-fit:cover;
+    margin:2px 0 18px 26px;shape-outside:circle();
+    background:var(--card);border:4px solid var(--card);
+  }
+  @media (max-width:600px){
+    .autor-foto{float:none;display:block;margin:0 auto 22px;width:120px;height:120px}
+  }
+
+  footer{background:var(--deep);color:#9A8F7E;padding:40px 0;font-size:14.5px}
+  footer strong{color:#fff}
+
+  @media (max-width:600px){
+    header{padding:40px 0 34px}
+    header h1{font-size:24px}
+    header h1 b{font-size:33px}
+    h2{font-size:19px}
+    h2 b{font-size:27px}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    ol.steps>li{padding-left:42px}
+  }
+  @media print{
+    nav,button.copy{display:none}
+    body{font-size:11pt;background:#fff}
+    header,footer{background:#fff;color:#000}
+    header h1,footer strong{color:#000}
+    header p,header .meta,footer{color:#333}
+    .prompt{background:#fff;border:1px solid #999}
+    .prompt pre{color:#000}
+    .prompt .label{color:#000}
+    .prompt .foot{color:#333}
+    section,.activity{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Guia prático · para fazer depois, sozinho</p>
+    <h1>IA para Avaliação, Engajamento<b>e Consolidação da Aprendizagem</b></h1>
+    <p>Este é o material de apoio da palestra. Tudo o que foi demonstrado na tela está aqui em passo a passo, com os prompts prontos para copiar. Você consegue reproduzir cada atividade sozinho, na sua própria disciplina, sem precisar de ajuda técnica.</p>
+    <p class="meta">Prof. Me. José Telmo de Souza Júnior · UNIG e ABEU · 31 de julho</p>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <ul>
+      <li><a href="#comecar">Antes de começar</a></li>
+      <li><a href="#entender">Entender</a></li>
+      <li><a href="#atividades">As 4 atividades</a></li>
+      <li><a href="#alunos">Seus alunos</a></li>
+      <li><a href="#cuidados">Cuidados</a></li>
+      <li><a href="#semana">Esta semana</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
+      <li><a href="#autor">Quem escreveu</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============================ ANTES DE COMEÇAR ============================ -->
+<section id="comecar">
+  <h2>Antes de<b>começar</b></h2>
+  <p class="sub">Quinze minutos de preparação que evitam uma hora de frustração</p>
+
+  <p>Nenhuma das quatro atividades exige pagamento, instalação ou conhecimento técnico. Exigem três coisas: uma conta, um material seu, e a disposição de não aceitar a primeira resposta que aparecer na tela.</p>
+
+  <h4>Contas que você vai precisar</h4>
+  <ul class="check">
+    <li><input type="checkbox" id="c1"><label for="c1"><b>Uma conta de conversa com IA</b><span class="n">ChatGPT (chat.openai.com), Claude (claude.ai) ou Gemini (gemini.google.com). Escolha uma. As três fazem tudo o que está neste guia.</span></label></li>
+    <li><input type="checkbox" id="c2"><label for="c2"><b>Uma conta Google</b><span class="n">Para o NotebookLM (notebooklm.google.com). Se você já usa Gmail, já tem.</span></label></li>
+    <li><input type="checkbox" id="c3"><label for="c3"><b>Material da sua disciplina em arquivo</b><span class="n">A ementa em texto, e de três a dez PDFs, slides ou capítulos que você já usa. Não precisa organizar nada antes.</span></label></li>
+  </ul>
+
+  <div class="box">
+    <h4>Um aviso sobre versões</h4>
+    <p>Estas ferramentas mudam de nome, de menu e de limite gratuito com frequência. Se um botão descrito aqui estiver em outro lugar, procure pela função, não pelo nome exato: a lógica de cada atividade continua valendo mesmo quando a interface muda.</p>
+  </div>
+</section>
+
+<!-- ============================ ENTENDER ============================ -->
+<section id="entender">
+  <h2>Parte 1<b>Entender antes de usar</b></h2>
+  <p class="sub">O mínimo que evita os erros mais caros</p>
+
+  <h3>As quatro coisas que essas ferramentas fazem</h3>
+  <p>Quase todo uso docente de IA cabe em uma destas quatro categorias. Saber em qual você está ajuda a escrever um pedido melhor.</p>
+  <div class="grid">
+    <div class="c"><b>Gerar</b><span>Criar do zero: plano de aula, prova, estudo de caso, rubrica, exemplo, analogia.</span></div>
+    <div class="c"><b>Transformar</b><span>Mudar o formato do que já existe: o texto vira resumo, mapa mental, áudio ou slide.</span></div>
+    <div class="c"><b>Analisar</b><span>Ler um material e devolver leitura crítica: resposta de aluno, artigo, planilha de notas.</span></div>
+    <div class="c"><b>Conversar com a fonte</b><span>Perguntar a um conjunto de documentos seus e receber a resposta com a citação da página.</span></div>
+  </div>
+  <p>A maioria dos professores usa só a primeira. O ganho de tempo real está na terceira e na quarta.</p>
+
+  <h3>Você não precisa de todas. Precisa da próxima.</h3>
+  <p>As ferramentas se organizam melhor como degraus do que como catálogo. A maioria dos professores está no primeiro degrau e acha que está atrasada — não está. Pular degrau é o que costuma fazer desistir.</p>
+  <div class="grid">
+    <div class="c"><b>1. Comece aqui</b><span><strong>ChatGPT, Claude ou Gemini.</strong> Uma conversa só. Gera plano de aula, prova, exemplo, rubrica. Resolve a maior parte do que você precisa, e a diferença entre as três é menor do que a diferença entre usar e não usar.</span></div>
+    <div class="c"><b>2. Quando pegar o jeito</b><span><strong>NotebookLM.</strong> A bibliografia da sua disciplina passa a responder perguntas com citação da página. Baixo risco de invenção e fácil de justificar em colegiado.</span></div>
+    <div class="c"><b>3. Se fizer sentido</b><span><strong>Google Flow e geradores de imagem.</strong> Vídeo e visual para abrir aula. Alto efeito imediato, retorno pedagógico menor. Último da fila, não o primeiro.</span></div>
+  </div>
+  <p class="quote">Trocar de degrau é fácil. Pular degrau é o que faz desistir.</p>
+
+  <h3>Onde elas erram</h3>
+  <div class="grid">
+    <div class="c"><b>Alucinação</b><span>Inventa fato com total confiança. Quanto mais específico o dado pedido, maior o risco.</span></div>
+    <div class="c"><b>Referência falsa</b><span>Cria artigo, autor e DOI que não existem. Nunca cite sem abrir a fonte original.</span></div>
+    <div class="c"><b>Corte de conhecimento</b><span>Não sabe o que aconteceu depois do treinamento, a menos que busque na web.</span></div>
+    <div class="c"><b>Viés</b><span>Reproduz o que havia nos dados. Reveja nomes, exemplos e contextos antes de levar à turma.</span></div>
+  </div>
+  <p class="quote">Regra de bolso: use IA para aquilo que você é capaz de conferir.</p>
+
+  <h3>Anatomia de um pedido que funciona</h3>
+  <p>A diferença entre um resultado genérico e um resultado utilizável quase nunca está na ferramenta. Está no pedido. Um bom pedido tem cinco partes:</p>
+  <ul class="plain">
+    <li><strong>Papel</strong> — quem a IA deve ser. <em>"Você é professor de Metodologia Científica no ensino superior."</em></li>
+    <li><strong>Contexto</strong> — quem é a sua turma. <em>"Turma de 1º período, 40 alunos, que nunca escreveu um projeto de pesquisa."</em></li>
+    <li><strong>Tarefa</strong> — o que você quer. <em>"Crie um plano de aula de 50 minutos sobre formulação de problema de pesquisa."</em></li>
+    <li><strong>Formato</strong> — como quer receber. <em>"Em tabela: momento, duração, o que o professor faz, o que o aluno faz."</em></li>
+    <li><strong>Restrição</strong> — o que não fazer. <em>"Não use exemplos de outras áreas e não passe de uma página."</em></li>
+  </ul>
+  <p>Faça o teste: peça primeiro <em>"faça um plano de aula"</em> e depois o pedido completo acima. A diferença na tela dispensa explicação.</p>
+</section>
+
+<!-- ============================ ATIVIDADES ============================ -->
+<section id="atividades">
+  <h2>Parte 2<b>As quatro atividades</b></h2>
+  <p class="sub">Todas usam a mesma disciplina de exemplo, Metodologia Científica. Troque pelo nome da sua e tudo continua funcionando.</p>
+
+  <!-- ---------- ATIVIDADE 1 ---------- -->
+  <div class="activity" id="a1">
+    <div class="actbar">
+      <span class="tag">Atividade 1</span>
+      <span class="time">15 minutos</span>
+      <span class="tool">ChatGPT, Claude ou Gemini</span>
+    </div>
+    <h3 style="margin-top:6px">Do tema ao plano de aula</h3>
+    <p>O objetivo aqui não é receber um plano pronto e usar. É receber um esqueleto em trinta segundos e gastar o seu tempo no que só você sabe fazer: ajustar ao que a sua turma aguenta.</p>
+
+    <ol class="steps">
+      <li>
+        <span class="st">Abra uma conversa nova</span>
+        <span class="sd">Não continue uma conversa antiga. Ela carrega o assunto anterior e contamina a resposta com contexto que não interessa. <em>Conversa nova para cada tarefa nova.</em></span>
+      </li>
+      <li>
+        <span class="st">Cole o prompt base, trocando o que está entre colchetes</span>
+        <span class="sd">Os trechos destacados são os únicos que você precisa editar. Quanto mais verdadeiro for o contexto da turma, mais aproveitável fica a resposta.</span>
+      </li>
+      <li>
+        <span class="st">Leia com olho de professor, não de usuário</span>
+        <span class="sd">Pergunte-se: essa atividade cabe em dez minutos com quarenta alunos? Esse exemplo faz sentido no primeiro período? <em>A primeira versão quase nunca é a boa.</em></span>
+      </li>
+      <li>
+        <span class="st">Refine com um segundo pedido</span>
+        <span class="sd">Este é o passo que quase todo mundo pula, e é o que separa resultado genérico de resultado utilizável. Você não precisa recomeçar: converse. <em>"O momento 3 está longo demais para 40 alunos. Reduza para 10 minutos e troque a atividade por algo que funcione em dupla, sem material impresso."</em></span>
+      </li>
+      <li>
+        <span class="st">Peça o estudo de caso para abrir a aula</span>
+        <span class="sd">Uma aula que começa com uma situação concreta prende mais do que uma que começa com definição. Use o segundo prompt abaixo.</span>
+      </li>
+      <li>
+        <span class="st">Copie para o seu editor e assine</span>
+        <span class="sd">Passe para o Word ou Docs, ajuste a linguagem para a sua voz e guarde. <em>A IA gerou o esqueleto; a autoria continua sendo sua.</em></span>
+      </li>
+    </ol>
+
+    <div class="prompt">
+      <div class="head"><span class="label">Prompt 1 · o plano de aula</span><button class="copy">Copiar</button></div>
+      <pre>Você é professor de <span class="fill">[SUA DISCIPLINA]</span> no ensino superior.
+Turma de <span class="fill">[PERÍODO]</span>, <span class="fill">[NÚMERO]</span> alunos, aula de <span class="fill">[DURAÇÃO]</span> minutos, <span class="fill">[RECURSOS DISPONÍVEIS OU LIMITAÇÕES]</span>.
+
+Crie um plano de aula sobre <span class="fill">[TEMA DA AULA]</span> com:
+- tabela: momento, duração, ação do professor, ação do aluno
+- 1 pergunta disparadora para abrir a aula
+- 1 atividade em dupla de 10 minutos
+- 3 critérios observáveis para saber se a aula funcionou
+
+Linguagem direta, no máximo uma página.</pre>
+      <div class="foot">Exemplo de preenchimento: disciplina "Metodologia Científica", período "1º", 40 alunos, 50 minutos, "sem laboratório e sem material impresso", tema "formulação de problema de pesquisa".</div>
+    </div>
+
+    <div class="prompt">
+      <div class="head"><span class="label">Prompt 2 · o estudo de caso</span><button class="copy">Copiar</button></div>
+      <pre>Agora transforme o momento de abertura em um estudo de caso curto,
+com uma situação real de pesquisa que um aluno de <span class="fill">[PERÍODO]</span> consiga discutir
+sem conhecimento prévio.
+
+Máximo 150 palavras, terminando com uma pergunta aberta —
+não com a resposta.</pre>
+    </div>
+
+    <div class="warn">
+      <h4>O que costuma dar errado</h4>
+      <ul class="plain">
+        <li><strong>Pedido vago, plano genérico.</strong> "Faça um plano de aula sobre metodologia" devolve exatamente o que você esperaria de alguém que não conhece a sua turma.</li>
+        <li><strong>Aceitar a primeira versão.</strong> O valor está na conversa, não na primeira resposta.</li>
+        <li><strong>Esquecer a restrição de tempo.</strong> Sem dizer quantos minutos, ela sempre propõe mais atividade do que cabe na aula.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ---------- ATIVIDADE 2 ---------- -->
+  <div class="activity" id="a2">
+    <div class="actbar">
+      <span class="tag">Atividade 2</span>
+      <span class="time">20 minutos</span>
+      <span class="tool">NotebookLM</span>
+    </div>
+    <h3 style="margin-top:6px">A bibliografia da disciplina virando material de estudo</h3>
+    <p>Esta é a atividade que mais surpreende professor, e a mais fácil de defender em colegiado. O NotebookLM só responde a partir dos arquivos que você subiu — ele não busca na internet nem completa com o que "acha". A fronteira do que ele sabe é a bibliografia que você escolheu.</p>
+
+    <ol class="steps">
+      <li>
+        <span class="st">Acesse notebooklm.google.com e crie um caderno novo</span>
+        <span class="sd">Entre com a sua conta Google. Dê ao caderno o nome da disciplina — você vai criar um por disciplina, não um só para tudo.</span>
+      </li>
+      <li>
+        <span class="st">Adicione as fontes</span>
+        <span class="sd">PDFs, slides, documentos do Google, links de páginas, vídeos do YouTube ou texto colado. <em>Comece com três a dez arquivos que você já usa na disciplina.</em> Há um limite de fontes por caderno na versão gratuita — a própria tela mostra quantas você ainda pode adicionar.</span>
+      </li>
+      <li>
+        <span class="st">Espere o processamento</span>
+        <span class="sd">Alguns segundos por arquivo. Enquanto isso ele lê tudo e monta um índice interno do material.</span>
+      </li>
+      <li>
+        <span class="st">Gere o resumo em áudio</span>
+        <span class="sd">Dois apresentadores conversando sobre o seu material, em formato de podcast. <em>Se vier em inglês, procure a opção de idioma nas configurações do caderno e gere de novo.</em> Leva alguns minutos: deixe processando e faça outra coisa.</span>
+      </li>
+      <li>
+        <span class="st">Gere os materiais de estudo</span>
+        <span class="sd">Guia de estudo, mapa mental, resumo, perguntas frequentes, linha do tempo. Cada um sai de um clique e vem baseado apenas nas suas fontes. <em>O guia de estudo é o de maior retorno imediato para a turma.</em></span>
+      </li>
+      <li>
+        <span class="st">Faça uma pergunta e confira a citação</span>
+        <span class="sd">Pergunte algo que você sabe que está em um dos textos. A resposta vem com um número que leva ao trecho exato do PDF. <em>Abra a citação. É esse hábito que você quer ensinar ao aluno: conferir, não confiar.</em></span>
+      </li>
+      <li>
+        <span class="st">Compartilhe o caderno com a turma</span>
+        <span class="sd">Pelo botão de compartilhamento, como em qualquer arquivo do Google. O aluno passa a interrogar a bibliografia que você escolheu, em vez de procurar resumo pronto na internet.</span>
+      </li>
+    </ol>
+
+    <div class="box">
+      <h4>Por que isso importa mais do que parece</h4>
+      <p>A pergunta que todo coordenador faz é "como eu controlo o uso de IA pelos alunos". A resposta honesta é que você não controla — mas pode direcionar. Um caderno com a bibliografia da disciplina dá ao aluno uma ferramenta melhor do que a que ele usaria sozinho, e ainda o obriga a lidar com as fontes que você selecionou.</p>
+    </div>
+
+    <div class="warn">
+      <h4>O que costuma dar errado</h4>
+      <ul class="plain">
+        <li><strong>Subir fonte demais.</strong> Um caderno com quarenta arquivos de assuntos diferentes responde pior que um com oito bem escolhidos.</li>
+        <li><strong>Esperar que ele saiba coisas de fora.</strong> Se você perguntar algo que não está nas fontes, ele diz que não encontrou. Isso não é defeito, é a garantia.</li>
+        <li><strong>Distribuir o áudio sem ouvir antes.</strong> Ouça os primeiros minutos. O tom é de conversa, e nem sempre a ênfase cai onde você gostaria.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ---------- ATIVIDADE 3 ---------- -->
+  <div class="activity" id="a3">
+    <div class="actbar">
+      <span class="tag">Atividade 3</span>
+      <span class="time">25 minutos</span>
+      <span class="tool">ChatGPT, Claude ou Gemini</span>
+    </div>
+    <h3 style="margin-top:6px">Prova, rubrica e correção assistida</h3>
+    <p>É a atividade que mais devolve tempo na sua semana, e a que exige mais cuidado. Faça na ordem: primeiro a prova, depois a rubrica, depois a correção. Cada etapa alimenta a seguinte, e trocar a ordem estraga o resultado.</p>
+
+    <h4>Etapa A — A prova</h4>
+    <ol class="steps">
+      <li>
+        <span class="st">Reúna o conteúdo da aula em texto</span>
+        <span class="sd">Slides, resumo, capítulo — qualquer coisa que descreva o que foi efetivamente ensinado. <em>Sem isso, a prova sai sobre o tema, não sobre a sua aula.</em></span>
+      </li>
+      <li>
+        <span class="st">Gere a avaliação com o prompt abaixo</span>
+        <span class="sd">Repare que ele pede o objetivo de aprendizagem de cada questão. Isso força um alinhamento que costuma faltar em prova feita às pressas.</span>
+      </li>
+      <li>
+        <span class="st">Confira o gabarito, questão por questão</span>
+        <span class="sd">Este passo não é opcional. <em>Erro de gabarito em múltipla escolha acontece</em>, principalmente quando há alternativas parecidas ou negativas. Leia cada justificativa.</span>
+      </li>
+    </ol>
+
+    <div class="prompt">
+      <div class="head"><span class="label">Prompt 3 · a prova</span><button class="copy">Copiar</button></div>
+      <pre>A partir do conteúdo abaixo, crie uma avaliação de <span class="fill">[SUA DISCIPLINA]</span>:
+
+- 3 questões de múltipla escolha, com gabarito e justificativa
+  de cada alternativa (inclusive das erradas)
+- 2 questões dissertativas curtas
+
+Indique, em cada questão, qual objetivo de aprendizagem ela verifica.
+Não crie questões que possam ser respondidas apenas com o senso comum.
+
+Conteúdo: "<span class="fill">[COLE AQUI O MATERIAL DA AULA]</span>"</pre>
+    </div>
+
+    <h4>Etapa B — A rubrica</h4>
+    <ol class="steps">
+      <li>
+        <span class="st">Peça a rubrica na mesma conversa</span>
+        <span class="sd">Na mesma conversa, não em outra: ela já conhece as questões que acabou de criar e a rubrica sai alinhada a elas.</span>
+      </li>
+      <li>
+        <span class="st">Exija comportamento observável, não adjetivo</span>
+        <span class="sd">É a instrução mais importante do prompt. <em>"Argumentação boa" não é critério; "apresenta ao menos duas evidências que sustentam a tese" é.</em> Sem isso, você recebe uma rubrica decorativa.</span>
+      </li>
+      <li>
+        <span class="st">Ajuste os critérios ao que você realmente valoriza</span>
+        <span class="sd">Se na sua disciplina o uso de fonte pesa mais que a clareza, diga isso e peça para redistribuir.</span>
+      </li>
+    </ol>
+
+    <div class="prompt">
+      <div class="head"><span class="label">Prompt 4 · a rubrica</span><button class="copy">Copiar</button></div>
+      <pre>Crie a rubrica de correção das questões dissertativas acima,
+com 4 critérios (domínio do conceito, argumentação, uso de fonte,
+clareza) e 4 níveis (insuficiente, básico, adequado, avançado),
+em formato de tabela.
+
+Descreva cada nível com comportamento observável, não com adjetivo:
+o que exatamente o aluno precisa ter escrito para estar naquele nível.</pre>
+    </div>
+
+    <h4>Etapa C — A correção assistida</h4>
+    <ol class="steps">
+      <li>
+        <span class="st">Anonimize a resposta antes de colar</span>
+        <span class="sd">Retire nome, matrícula, e-mail e qualquer dado que identifique o aluno. <em>Isto não é formalidade: trabalho identificado é dado pessoal de terceiro, e a LGPD se aplica.</em></span>
+      </li>
+      <li>
+        <span class="st">Aplique a rubrica com o prompt abaixo</span>
+        <span class="sd">Comece por uma resposta só, para calibrar. Quando o resultado estiver no seu padrão, siga para as demais.</span>
+      </li>
+      <li>
+        <span class="st">Revise a nota e reescreva o que não soar como você</span>
+        <span class="sd">A IA sugere e justifica; <em>quem atribui a nota continua sendo você.</em> O comentário vai ser lido por uma pessoa — ele precisa soar como o seu professor, não como um manual.</span>
+      </li>
+      <li>
+        <span class="st">Avise a turma que houve apoio de IA na correção</span>
+        <span class="sd">Transparência no início do semestre evita conflito no final dele. É também o exemplo que você quer que eles sigam.</span>
+      </li>
+    </ol>
+
+    <div class="prompt">
+      <div class="head"><span class="label">Prompt 5 · a correção</span><button class="copy">Copiar</button></div>
+      <pre>Você é professor de <span class="fill">[SUA DISCIPLINA]</span>.
+Aplique a rubrica abaixo à resposta de um aluno.
+
+Devolva:
+- nota por critério
+- justificativa de uma linha por critério
+- um comentário de até 4 linhas escrito para o aluno ler,
+  apontando o que melhorar, sem entregar a resposta pronta
+
+Rubrica: "<span class="fill">[COLE A RUBRICA]</span>"
+Resposta do aluno: "<span class="fill">[COLE A RESPOSTA JÁ ANONIMIZADA]</span>"</pre>
+      <div class="foot">Para corrigir várias de uma vez, cole a rubrica uma vez e vá enviando as respostas em sequência na mesma conversa.</div>
+    </div>
+
+    <h4>Etapa D — Devolver escrita, não só nota</h4>
+    <p>Trabalho acadêmico não se corrige apenas com nota. Se corrige mostrando ao aluno o que reescrever. Este é o uso que mais melhora a escrita da turma ao longo de um semestre, e leva menos tempo do que parece.</p>
+    <p>Um exemplo do tipo de coisa que aparece: <em>"O presente trabalho tem como objetivo principal buscar analisar de forma ampla os diversos fatores que podem vir a influenciar..."</em> — verbo vazio, redundância, hedge desnecessário. O que você quer da IA não é o texto reescrito: é o diagnóstico, para o aluno corrigir sozinho.</p>
+
+    <div class="prompt">
+      <div class="head"><span class="label">Prompt 6 · feedback de escrita</span><button class="copy">Copiar</button></div>
+      <pre>Você é parecerista de um periódico acadêmico.
+Comente o trecho abaixo apontando clareza, coerência,
+tom acadêmico e três melhorias urgentes.
+
+Não reescreva o texto: aponte o problema e explique por que
+é problema, para que o autor consiga corrigir sozinho.
+
+Trecho: "<span class="fill">[COLE O TRECHO DO ALUNO, JÁ ANONIMIZADO]</span>"</pre>
+      <div class="foot">A instrução decisiva é a penúltima linha. Sem ela, a ferramenta devolve o parágrafo pronto — e aluno que recebe o texto pronto não aprende a escrever.</div>
+    </div>
+
+    <div class="warn">
+      <h4>Três limites que não se negociam</h4>
+      <ul class="plain">
+        <li><strong>A nota final é sua.</strong> A ferramenta sugere e justifica; a decisão e a responsabilidade continuam com o professor.</li>
+        <li><strong>Anonimize sempre.</strong> Antes de subir qualquer trabalho, retire o que identifica o aluno — e verifique se a sua instituição já tem política sobre isso.</li>
+        <li><strong>Diga que usou.</strong> Correção com apoio de IA sem aviso é o tipo de coisa que vira problema quando um aluno contesta a nota.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ---------- ATIVIDADE 4 ---------- -->
+  <div class="activity" id="a4">
+    <div class="actbar">
+      <span class="tag">Atividade 4</span>
+      <span class="time">15 minutos</span>
+      <span class="tool">Google Flow e geradores de imagem</span>
+    </div>
+    <h3 style="margin-top:6px">Imagem e vídeo para abrir a aula</h3>
+    <p>É a atividade de menor retorno pedagógico e maior efeito imediato. Serve para os dois primeiros minutos da aula, quando você precisa que a turma pare de olhar o celular. Não serve para explicar conteúdo técnico.</p>
+
+    <ol class="steps">
+      <li>
+        <span class="st">Escolha um conceito abstrato da sua disciplina</span>
+        <span class="sd">Funciona melhor com aquilo que é difícil de desenhar no quadro: um processo, uma tensão entre duas ideias, uma situação hipotética.</span>
+      </li>
+      <li>
+        <span class="st">Gere primeiro a imagem</span>
+        <span class="sd">Imagem custa segundos; vídeo custa minutos. <em>Acerte a ideia na imagem antes de gastar tempo com movimento.</em> Descreva a cena, o estilo e o que não deve aparecer.</span>
+      </li>
+      <li>
+        <span class="st">Só então gere o vídeo no Google Flow</span>
+        <span class="sd">Descreva a cena em uma frase, incluindo o movimento da câmera. Clipes curtos saem melhor que longos.</span>
+      </li>
+      <li>
+        <span class="st">Assista inteiro antes de exibir para a turma</span>
+        <span class="sd">Vídeo gerado erra detalhe, texto na tela e proporção — <em>e o aluno percebe antes de você.</em> Um deslize aqui custa mais credibilidade do que o vídeo agrega.</span>
+      </li>
+      <li>
+        <span class="st">Gere na véspera, não no intervalo</span>
+        <span class="sd">Baixe o arquivo e leve no computador. Não conte com a internet da instituição na hora da aula.</span>
+      </li>
+    </ol>
+
+    <div class="prompt">
+      <div class="head"><span class="label">Prompt 7 · imagem para explicar um conceito</span><button class="copy">Copiar</button></div>
+      <pre>Crie uma imagem que ilustre o conceito de <span class="fill">[CONCEITO]</span>
+para uma aula de <span class="fill">[SUA DISCIPLINA]</span> no ensino superior.
+
+Estilo: ilustração limpa, sem texto na imagem, adequada para
+projeção em sala. Sem pessoas identificáveis.
+A imagem deve funcionar como metáfora visual, não como diagrama técnico.</pre>
+    </div>
+
+    <div class="box">
+      <h4>A régua</h4>
+      <p>É a mesma de sempre: se você não colocaria no slide sem revisar, não coloque no vídeo. Um recurso visual que contém um erro ensina o erro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ALUNOS ============================ -->
+<section id="alunos">
+  <h2>O que já chegou<b>na sua mesa</b></h2>
+  <p class="sub">As ferramentas por trás dos trabalhos acadêmicos que você recebe</p>
+
+  <p>Enquanto a discussão sobre IA na docência avança devagar, os alunos já resolveram a questão por conta própria. Estas quatro estão por trás de boa parte dos trabalhos acadêmicos que chegam à sua mesa hoje. Conhecê-las não é curiosidade: é pré-requisito para orientar com propriedade e para avaliar sabendo o que está avaliando.</p>
+
+  <div class="grid">
+    <div class="c"><b>Elicit</b><span>Busca artigos e monta uma tabela comparativa de método, amostra e resultado. Exporta direto para gerenciadores de referência.</span></div>
+    <div class="c"><b>Consensus</b><span>Responde a uma pergunta de pesquisa resumindo o que os estudos encontraram e mostrando o grau de convergência entre eles.</span></div>
+    <div class="c"><b>ResearchRabbit</b><span>Parte de um artigo e mapeia visualmente o que o cita e o que ele cita. Encontra literatura que a busca por palavra-chave não alcança.</span></div>
+    <div class="c"><b>Perplexity</b><span>Busca na web devolvendo resposta sintetizada com links. Cita fonte — mas ainda erra atribuição, e precisa ser conferida.</span></div>
+  </div>
+
+  <div class="warn">
+    <h4>Cuidado com a promessa de "zero alucinação"</h4>
+    <p>Ferramentas que citam fontes reduzem muito o risco de invenção, mas não o eliminam. É comum a citação existir e não sustentar exatamente o que a frase afirma. Ao orientar um aluno, a régua continua a mesma: abrir a fonte e verificar se ela diz aquilo. Quem promete ausência total de erro está vendendo, não descrevendo.</p>
+  </div>
+
+  <h3>O que fazer com isso</h3>
+  <p>A pergunta útil não é como impedir o uso, e sim o que você vai avaliar a partir de agora. Duas saídas costumam funcionar melhor que a proibição:</p>
+  <ul class="plain">
+    <li><strong>Mudar o objeto da avaliação.</strong> Processo, versões intermediárias, defesa oral, aplicação a um caso local que a ferramenta não conhece. Tudo isso resiste bem ao atalho.</li>
+    <li><strong>Tornar o uso declarado.</strong> O aluno entrega o trabalho e uma nota curta explicando onde usou IA e o que fez com o resultado. Transforma o que seria ocultação em objeto de reflexão — e você passa a enxergar como a turma está usando.</li>
+  </ul>
+</section>
+
+<!-- ============================ CUIDADOS ============================ -->
+<section id="cuidados">
+  <h2>Parte 3<b>O que não terceirizar</b></h2>
+  <p class="sub">Quatro compromissos que continuam sendo inteiramente seus</p>
+
+  <div class="grid">
+    <div class="c"><b>Viés</b><span>O modelo repete o que havia nos dados de treinamento. O olhar crítico sobre exemplos, nomes e contextos continua sendo seu.</span></div>
+    <div class="c"><b>Checagem</b><span>Nenhuma estatística e nenhuma referência vão para o slide sem você ter aberto a fonte original.</span></div>
+    <div class="c"><b>Dados do aluno</b><span>Trabalho identificado é dado pessoal de terceiro. Anonimize antes de subir e verifique a política da sua instituição.</span></div>
+    <div class="c"><b>Autoria docente</b><span>A IA amplia a prática docente. Ela não decide no lugar do professor, e a assinatura no material continua sendo sua.</span></div>
+  </div>
+
+  <h3>Sobre referências: o erro mais caro</h3>
+  <p>Ferramentas de conversa com IA produzem referências bibliográficas plausíveis e inexistentes com uma frequência incômoda. Autor real, periódico real, título verossímil, ano coerente — e o artigo não existe. Para quem escreve e orienta no ensino superior, este é o risco mais sério deste guia.</p>
+  <p>A regra prática é simples: <strong>toda referência que sair de uma IA precisa ser localizada na base antes de ser usada.</strong> Se você não abriu, não cite. E vale ensinar isso explicitamente aos alunos — é o tipo de erro que eles cometem sem má-fé e que compromete um trabalho inteiro.</p>
+
+  <h3>Sobre a ementa</h3>
+  <p>Se você não definir a regra de uso de IA na sua disciplina, cada aluno vai definir a dele. Vale escrever um parágrafo curto na ementa dizendo o que é permitido, o que precisa ser declarado e o que é considerado desonestidade acadêmica. Discuta esse parágrafo na primeira aula, não no dia da entrega do trabalho.</p>
+</section>
+
+<!-- ============================ SEMANA ============================ -->
+<section id="semana">
+  <h2>Parte 4<b>Três coisas para fazer nesta semana</b></h2>
+  <p class="sub">Nada aqui leva mais de vinte minutos</p>
+  <ul class="check">
+    <li><input type="checkbox" id="s1"><label for="s1"><b>Suba a bibliografia de uma disciplina no NotebookLM</b><span class="n">Gere o guia de estudo e compartilhe o caderno com a turma. Cerca de 20 minutos.</span></label></li>
+    <li><input type="checkbox" id="s2"><label for="s2"><b>Peça uma rubrica para o próximo trabalho que você já ia corrigir</b><span class="n">Compare com o critério que você usaria de cabeça e fique com o melhor dos dois. Cerca de 10 minutos.</span></label></li>
+    <li><input type="checkbox" id="s3"><label for="s3"><b>Escreva o parágrafo da sua ementa sobre uso de IA pelos alunos</b><span class="n">Se você não definir a regra, cada aluno vai definir a dele. Cerca de 15 minutos.</span></label></li>
+  </ul>
+  <p class="quote">Se fizer só uma, faça a primeira.</p>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section id="faq">
+  <h2>Dúvidas que<b>sempre aparecem</b></h2>
+  <p class="sub">As perguntas do fim da palestra, respondidas com calma</p>
+
+  <details>
+    <summary>Usar IA para preparar aula é plágio?</summary>
+    <p>Não, pela mesma razão que usar um livro didático, um banco de questões ou o plano de aula de um colega não é. O que caracteriza problema é apresentar como produção intelectual original algo que você não produziu — em artigo, relatório ou material autoral.</p>
+    <p>Para material de aula, a régua prática é a curadoria: você escolheu, revisou, ajustou e assumiu a responsabilidade pelo que está ali. Se você não leu o que vai distribuir, aí sim há um problema — e ele não é de plágio, é de docência.</p>
+  </details>
+
+  <details>
+    <summary>E se os meus alunos usarem IA para fazer os trabalhos?</summary>
+    <p>Eles já estão usando. A pergunta útil não é como impedir, mas o que você vai avaliar a partir de agora.</p>
+    <p>Duas saídas costumam funcionar melhor que a proibição: mudar o objeto de avaliação (processo, defesa oral, versões intermediárias, aplicação a um caso local que a IA não conhece) e tornar o uso declarado (o aluno entrega o trabalho e uma nota explicando onde usou IA e o que fez com o resultado). Detectores de texto gerado existem, mas erram nos dois sentidos e não sustentam sozinhos uma acusação.</p>
+  </details>
+
+  <details>
+    <summary>Preciso pagar por alguma dessas ferramentas?</summary>
+    <p>Não para o que está neste guia. Todas têm versão gratuita suficiente para as quatro atividades. As versões pagas oferecem mais capacidade e limites maiores de uso — vale considerar depois que você já tiver incorporado alguma dessas práticas à rotina, não antes.</p>
+  </details>
+
+  <details>
+    <summary>Posso subir o trabalho do meu aluno nessas ferramentas?</summary>
+    <p>Com anonimização, sim. Sem anonimização, você está tratando dado pessoal de terceiro em um serviço fora da instituição, e isso entra no escopo da LGPD.</p>
+    <p>Antes de adotar a correção assistida em escala, verifique se a sua instituição já tem política ou orientação sobre uso de IA. Se não tiver, vale levantar a questão no colegiado — e ser quem levanta costuma ser melhor do que ser quem descobre depois.</p>
+  </details>
+
+  <details>
+    <summary>A IA vai substituir o professor?</summary>
+    <p>A pergunta mais útil é outra: o que da sua semana é trabalho intelectual e o que é trabalho repetitivo. Escrever cinquenta comentários com o mesmo critério na quinta à noite é a segunda coisa. Decidir o que a turma precisa aprender, perceber quem parou de entender e sustentar uma discussão em sala é a primeira — e é para isso que o tempo economizado deveria voltar.</p>
+  </details>
+
+  <details>
+    <summary>Por onde eu começo se só tenho meia hora?</summary>
+    <p>NotebookLM, com uma disciplina só. É a atividade com maior retorno por minuto investido, a de menor risco de erro, e a única em que o resultado já é diretamente utilizável pelos alunos sem passar por revisão pesada.</p>
+  </details>
+</section>
+
+<!-- ============================ AUTOR ============================ -->
+<section id="autor">
+  <h2>Quem escreveu<b>este guia</b></h2>
+
+  <!-- FOTO: para deixar permanente, salve a imagem como "jose-telmo.jpg" na mesma
+       pasta deste arquivo e troque o src abaixo por "jose-telmo.jpg" -->
+  <img class="autor-foto"
+       src="https://media.licdn.com/dms/image/v2/D5603AQFGo_qShbhBDw/profile-displayphoto-crop_800_800/B56Z4OrjqIKMAI-/0/1778362761589?e=1787184000&amp;v=beta&amp;t=P5j_oRj2guxAolKcJW4LccXPoJfloT2U5kJiLtCw93A"
+       alt="Retrato do professor José Telmo de Souza Júnior"
+       loading="lazy"
+       onerror="this.style.display='none'">
+
+  <p class="sub">Prof. Me. José Telmo de Souza Júnior</p>
+
+  <p>Mestre em Administração de Empresas pelo IBMEC, com especializações em Marketing (Estácio) e Marketing Digital (UNIFACHA), além de formação em Tutoria Online e em Aprendizagem Baseada em Projetos. Publicitário, professor de Comunicação e Marketing Digital.</p>
+
+  <p>Atua no ensino superior desde 2008, tendo lecionado na FGV, ESPM, Infnet, SENAC, Estácio, Anhanguera, IBMR, Cândido Mendes e UNIFACHA, em disciplinas, palestras e workshops voltados à formação de profissionais de comunicação e marketing digital.</p>
+
+  <p>Atualmente é coordenador dos cursos de graduação em Administração e Marketing da UNIFACHA, nas modalidades presencial e EAD, e integra o Núcleo Docente Estruturante do curso de Design da mesma instituição. Já coordenou a Educação a Distância e o curso de Publicidade e Propaganda da Uniabeu e da FAVENI, acompanhando o desenvolvimento pedagógico e tecnológico dos cursos online. Atua também como tutor online e conteudista em cursos de graduação e pós-graduação nas áreas de Comunicação, Marketing e EAD.</p>
+
+  <p>No mercado desde 1998, soma mais de 25 anos de experiência em publicidade e marketing, com projetos em agências, startups e empresas. Sua atuação abrange desenvolvimento de marcas, estratégia digital, análise de marketing, SEM, SEO e PPC, gestão de projetos em Scrum e Kanban, relações públicas digitais, web analytics e ciência de dados aplicada à tomada de decisão — além de comunicação visual, incluindo ilustração, UX, web design, design gráfico, identidades visuais e projetos editoriais.</p>
+
+  <div class="box">
+    <h4>Onde encontrar</h4>
+    <ul class="plain">
+      <li><strong>LinkedIn</strong> — <a href="https://www.linkedin.com/in/josetelmo/">linkedin.com/in/josetelmo</a></li>
+      <li><strong>Currículo Lattes</strong> — <a href="https://lattes.cnpq.br/1618740477987281">lattes.cnpq.br/1618740477987281</a></li>
+    </ul>
+    <p>Para convites de palestra, oficina ou consultoria em uso de IA na docência, o LinkedIn é o caminho mais rápido.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>IA para Avaliação, Engajamento e Consolidação da Aprendizagem</strong><br>
+    Material de apoio da palestra · Prof. Me. José Telmo de Souza Júnior · UNIG e ABEU · 31 de julho</p>
+    <p><a href="https://www.linkedin.com/in/josetelmo/" style="color:#CFC5B5">linkedin.com/in/josetelmo</a> · <a href="https://lattes.cnpq.br/1618740477987281" style="color:#CFC5B5">Currículo Lattes</a></p>
+    <p>Este guia pode ser copiado, impresso e distribuído livremente entre docentes.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.prompt').forEach(function(block){
+  var btn = block.querySelector('button.copy');
+  var pre = block.querySelector('pre');
+  if(!btn || !pre) return;
+  btn.addEventListener('click', function(){
+    var texto = pre.innerText;
+    var done = function(){
+      btn.textContent = 'Copiado';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('done'); }, 2000);
+    };
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(texto).then(done).catch(fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = texto;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); }
+      catch(e){ btn.textContent = 'Selecione e copie'; }
+      document.body.removeChild(ta);
+    }
+  });
+});
+</script>
+</body>
+</html>
