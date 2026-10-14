@@ -1,4 +1,7 @@
+# Aprenda com Jose Telmo
+# Paginas publicas e recursos de renderizacao acessiveis aos buscadores.
 User-agent: *
 Allow: /
 
+# Sitemap com as URLs preferenciais do dominio.
 Sitemap: https://aprendacomjosetelmo.com.br/sitemap.xml

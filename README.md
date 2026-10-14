@@ -1,19 +1,24 @@
-# Guia: Criando sua Página com GitHub Pages
+# Aprenda com José Telmo
 
-Este site apresenta um conteúdo completo e atualizado sobre as vantagens de utilizar o **GitHub Pages** e um passo a passo detalhado para criar sua própria página, totalmente gratuita.
+Site institucional e materiais educacionais de José Telmo.
 
-## 🔍 Sobre o projeto
+Endereço: https://aprendacomjosetelmo.com.br/
 
-A proposta é orientar iniciantes e entusiastas da web sobre como hospedar seus próprios sites estáticos diretamente no GitHub, sem custo, com segurança (HTTPS) e facilidade de atualização via Git.
+## Páginas
 
-O conteúdo é organizado em:
+- `/`: apresentação profissional, atuação, materiais e canais de contato.
+- `/guia/`: IA para avaliação, engajamento e aprendizagem.
+- `/nanobanana/`: guia visual de IA generativa.
+- `/espm/`: Matriz BR.ai, energia e sustentabilidade.
+- `/quiz.html`: quiz de e-commerce.
+- `/github-pages/`: tutorial anteriormente publicado na página inicial.
 
-- ✅ Vantagens do GitHub Pages
-- 🛠️ Passo a passo completo (com links e exemplos)
-- 💡 Dicas úteis de templates, personalização e domínio próprio
+## Manutenção
 
+A home usa HTML estático, CSS compilado e ícones SVG locais. As fontes são carregadas pelo Google Fonts, com alternativas do sistema.
 
-## 🚀 Acesse a página
+As três configurações de Google Analytics foram preservadas na home e no tutorial de GitHub Pages: G-032NE3P86V, G-N5BJGK8EZ1 e G-0CC016BBCT. Elas são intencionais e foram usadas em demonstrações anteriores.
 
-Você pode visualizar a versão publicada do site acessando:
+Depois de mudar classes da home, executar `npm install` e `npm run build:css` e incluir o CSS resultante no commit. O site publicado não precisa de Node nem de compilação no navegador.
 
+Ao criar páginas públicas, atualizar o sitemap. Ao editar o perfil, manter os dados estruturados e o llms.txt coerentes. Preservar o CNAME e os arquivos de verificação do domínio.

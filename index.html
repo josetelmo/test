@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-<link type="image/png" sizes="32x32" rel="icon" href="favicon-32.png">
+  <meta charset="UTF-8" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-032NE3P86V"></script>
   <script>
@@ -13,124 +13,410 @@
     gtag('config', 'G-N5BJGK8EZ1');
     gtag('config', 'G-0CC016BBCT');
   </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de José Telmo, professor e profissional de marketing com atuação em inteligência artificial, estratégia digital, design, comunicação e educação." />
+  <meta name="author" content="José Telmo" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#09090b" />
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vantagens e Passo a Passo do GitHub Pages</title>
+  <link rel="canonical" href="https://aprendacomjosetelmo.com.br/" />
+
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="José Telmo — Marketing, Educação & Inteligência Artificial" />
+  <meta property="og:description" content="Professor e profissional de marketing com atuação em IA, estratégia digital, design, comunicação e educação." />
+  <meta property="og:url" content="https://aprendacomjosetelmo.com.br/" />
+  <meta property="og:site_name" content="José Telmo" />
+  <meta property="profile:first_name" content="José" />
+  <meta property="profile:last_name" content="Telmo" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="https://aprendacomjosetelmo.com.br/assets/social-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="José Telmo: Marketing, Educação e Inteligência Artificial" />
+  <meta name="twitter:image" content="https://aprendacomjosetelmo.com.br/assets/social-card.png" />
+  <meta name="twitter:title" content="José Telmo — Marketing, Educação & Inteligência Artificial" />
+  <meta name="twitter:description" content="Professor e profissional de marketing com atuação em IA, estratégia digital, design, comunicação e educação." />
+
+  <title>José Telmo — Marketing, Educação & Inteligência Artificial</title>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://aprendacomjosetelmo.com.br/#profile",
+      "url": "https://aprendacomjosetelmo.com.br/",
+      "name": "José Telmo — Marketing, Educação & Inteligência Artificial",
+      "description": "Perfil profissional de José Telmo, professor e profissional de marketing com atuação em inteligência artificial, estratégia digital, design, comunicação e educação.",
+      "inLanguage": "pt-BR",
+      "dateModified": "2026-10-14",
+      "mainEntity": {
+        "@id": "https://aprendacomjosetelmo.com.br/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://aprendacomjosetelmo.com.br/#person",
+      "name": "José Telmo",
+      "alternateName": "@josetelmo",
+      "url": "https://aprendacomjosetelmo.com.br/",
+      "description": "Professor e profissional de marketing com atuação em estratégia digital, inteligência artificial, design, comunicação e desenvolvimento de projetos.",
+      "jobTitle": "Professor e profissional de marketing",
+      "knowsAbout": [
+        "Marketing",
+        "Marketing Digital",
+        "Inteligência Artificial",
+        "IA Generativa",
+        "Educação",
+        "Design",
+        "UX",
+        "Comunicação",
+        "SEO",
+        "SEM",
+        "Estratégia Digital",
+        "Automação"
+      ],
+      "homeLocation": {
+        "@type": "City",
+        "name": "Rio de Janeiro"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/josetelmo",
+        "https://www.instagram.com/josetelmo",
+        "https://www.youtube.com/josetelmo"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://aprendacomjosetelmo.com.br/#website",
+      "url": "https://aprendacomjosetelmo.com.br/",
+      "name": "José Telmo",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://aprendacomjosetelmo.com.br/#person"
+      }
+    }
+  ]
+}
+  </script>
+
+  <link rel="stylesheet" href="/assets/site.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+
+  <!-- Tipografia e ícones via CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+
+
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
+    ::selection { background: #c7f36b; color: #09090b; }
+    body { background: #09090b; }
+    .noise {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.10'/%3E%3C/svg%3E");
     }
-    header {
-      background-color: #24292e;
-      color: white;
-      padding: 1rem;
-      text-align: center;
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
     }
-    main {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 2rem;
-    }
-    h1, h2, h3 {
-      color: #0366d6;
-    }
-    ol, ul {
-      padding-left: 1.2rem;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #eee;
-      margin-top: 3rem;
-    }
-    code {
-      background-color: #eaeaea;
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
+    .card { transition: transform .25s ease, border-color .25s ease, background-color .25s ease; }
+    .card:hover { transform: translateY(-4px); }
+    html { scroll-padding-top: 6rem; }
+    .skip-link { position: fixed; top: .75rem; left: 1rem; z-index: 100; padding: .75rem 1rem; border-radius: .5rem; background: #c7f36b; color: #09090b; transform: translateY(-200%); }
+    .skip-link:focus { transform: translateY(0); }
+    :focus-visible { outline: 3px solid #c7f36b; outline-offset: 5px; }
+    .mobile-menu summary { cursor: pointer; padding: .5rem; }
+    .mobile-menu-links { position: absolute; top: 4rem; left: 0; right: 0; display: grid; padding: 1rem; background: #09090b; border-bottom: 1px solid #ffffff26; }
+    .mobile-menu-links a { padding: .75rem; }
+    .text-zinc-500, .text-zinc-600 { color: #a1a1aa; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .card:hover { transform: none; }
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Aprenda com Prof.José Telmo</h1>
-    <h2>GitHub Pages: Vantagens e Como Criar Sua Página</h2>
+
+<body class="font-sans text-zinc-100 antialiased overflow-x-hidden">
+  <a class="skip-link" href="#principal">Pular para o conteúdo</a>
+  <div class="fixed inset-0 grid-bg pointer-events-none"></div>
+  <div class="fixed inset-0 noise opacity-30 pointer-events-none mix-blend-soft-light"></div>
+
+  <!-- NAV -->
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-ink/75 backdrop-blur-xl">
+    <nav aria-label="Navegação principal" class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#inicio" aria-label="José Telmo — início" class="font-display font-bold tracking-tight text-lg">JT<span class="text-lime">.</span></a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-zinc-400">
+        <a href="#sobre" class="hover:text-white transition">Sobre</a>
+        <a href="#atuacao" class="hover:text-white transition">Atuação</a>
+        <a href="#materiais" class="hover:text-white transition">Materiais</a>
+        <a href="#contato" class="hover:text-white transition">Contato</a>
+      </div>
+      <a href="https://linkedin.com/in/josetelmo" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm hover:bg-white hover:text-black transition">
+        LinkedIn <svg class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+      <details class="mobile-menu md:hidden">
+        <summary aria-label="Abrir navegação">Menu</summary>
+        <div class="mobile-menu-links"><a href="#sobre">Sobre</a><a href="#atuacao">Atuação</a><a href="#materiais">Materiais</a><a href="#contato">Contato</a></div>
+      </details>
+    </nav>
   </header>
-  <main>
-    <section>
-      <h2>Vantagens de usar o GitHub Pages</h2>
-      <ul>
-        <li><strong>Gratuito</strong>: sem custos de hospedagem para sites estáticos.</li>
-        <li><strong>Fácil integração com GitHub</strong>: qualquer push na branch correta já publica o site automaticamente.</li>
-        <li><strong>Suporte a domínio personalizado</strong>: você pode usar um domínio próprio com seu site.</li>
-        <li><strong>Certificado SSL automático</strong>: garante que seu site seja entregue via HTTPS.</li>
-        <li><strong>Ideal para portfólios, blogs, documentações, currículos, e páginas de projeto.</strong></li>
-        <li><strong>Suporte a Jekyll</strong>: permite gerar sites dinâmicos com conteúdo estático facilmente.</li>
-        <li><strong>Open Source</strong>: colaboração e controle de versão direto no repositório.</li>
-      </ul>
-    </section>
-    <section>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/BB3U2FE7QEk?si=6mwvLjqpI4V1rYCB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </section>
-    <section>
-      <h2>Passo a passo completo para criar sua página no GitHub Pages</h2>
-      <ol>
-        <li>
-          <h3>Crie sua conta no GitHub</h3>
-          <p>Acesse <a href="https://github.com" target="_blank">github.com</a> e crie uma conta gratuita.</p>
-        </li>
-        <li>
-          <h3>Crie um novo repositório</h3>
-          <p>O nome deve ser <code>seunome.github.io</code>. Exemplo: <code>joaosilva.github.io</code>. Esse será o endereço do seu site.</p>
-        </li>
-        <li>
-          <h3>Adicione os arquivos do site</h3>
-          <p>Você pode subir um arquivo <code>index.html</code> simples ou uma estrutura completa de site (HTML, CSS, JS). Utilize a opção "Upload files" ou faça isso via Git.</p>
-        </li>
-        <li>
-          <h3>Configure o GitHub Pages</h3>
-          <p>Vá em <strong>Settings</strong> do repositório, role até <strong>Pages</strong>, escolha a branch <code>main</code> e clique em "Save". O GitHub criará automaticamente o link de acesso.</p>
-        </li>
-        <li>
-          <h3>Acesse seu site</h3>
-          <p>Dentro de alguns minutos, seu site estará disponível no endereço <code>https://seunome.github.io</code>.</p>
-        </li>
-        <li>
-          <h3>Personalize com domínio próprio (opcional)</h3>
-          <p>No mesmo menu Pages, você pode configurar um domínio personalizado. Basta apontar o DNS do seu domínio para o GitHub Pages e adicionar o domínio nas configurações.</p>
-        </li>
-        <li>
-          <h3>Atualize seu site sempre que quiser</h3>
-          <p>Basta fazer alterações no repositório (enviar novos arquivos ou modificar os existentes) e o site será atualizado automaticamente.</p>
-        </li>
-        <li>
-          <h3>Use Jekyll para criar um blog (opcional)</h3>
-          <p>GitHub Pages tem suporte nativo ao <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>, uma ferramenta para gerar sites estáticos de forma automática, útil para blogs e documentação.</p>
-        </li>
-      </ol>
+
+  <main id="principal">
+    <!-- HERO -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-24 pb-16">
+      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[46rem] h-[46rem] rounded-full bg-electric/10 blur-3xl pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 w-full relative">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-end">
+          <div class="lg:col-span-8">
+            <div class="inline-flex items-center gap-2 rounded-full border border-lime/25 bg-lime/5 px-3 py-1.5 text-xs font-medium text-lime mb-7">
+              <span class="w-1.5 h-1.5 rounded-full bg-lime animate-pulse"></span>
+              Marketing · Educação · Inteligência Artificial
+            </div>
+
+            <h1 class="font-display text-5xl sm:text-7xl lg:text-[6.6rem] leading-[.92] tracking-[-0.055em] font-bold">
+              <span class="block mb-5 text-base sm:text-xl lg:text-2xl leading-normal tracking-normal font-semibold text-lime">
+                José Telmo · Marketing, Educação e Inteligência Artificial
+              </span>
+              Ideias que conectam.
+            </h1>
+
+            <p class="mt-8 max-w-2xl text-lg sm:text-xl leading-relaxed text-zinc-400">
+              Sou <strong class="text-white font-semibold">José Telmo</strong>. Professor e profissional de marketing com atuação em estratégia digital, IA, design, comunicação e desenvolvimento de projetos.
+            </p>
+
+            <div class="mt-9 flex flex-wrap gap-3">
+              <a href="#materiais" class="inline-flex items-center gap-2 rounded-full bg-lime text-black px-5 py-3 font-semibold hover:scale-[1.02] transition">
+                Explore os materiais <svg class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg>
+              </a>
+              <a href="https://youtube.com/josetelmo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-zinc-200 hover:bg-white/10 transition">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/>
+                </svg>
+                YouTube
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 lg:pb-2">
+            <div class="rounded-3xl border border-white/10 bg-white/[.035] p-6 shadow-glow">
+              <div class="flex items-center justify-between mb-8">
+                <span class="text-xs uppercase tracking-[.18em] text-zinc-500">Em poucas palavras</span>
+                <svg class="w-4 h-4 text-lime" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+              </div>
+              <p class="font-display text-2xl leading-snug text-zinc-200">
+                Transformo repertório de <span class="text-white">marketing</span>, <span class="text-white">educação</span> e <span class="text-white">tecnologia</span> em conteúdo, experiências e soluções.
+              </p>
+              <div class="mt-7 pt-6 border-t border-white/10 flex items-center justify-between text-sm">
+                <span class="text-zinc-500">Rio de Janeiro, Brasil</span>
+                <span class="text-lime">@josetelmo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Dicas adicionais</h2>
-      <ul>
-        <li>Utilize templates gratuitos prontos em sites como <a href="https://html5up.net/" target="_blank">HTML5 UP</a> e <a href="https://startbootstrap.com/" target="_blank">Start Bootstrap</a>.</li>
-        <li>Você pode conectar seu repositório ao <strong>Visual Studio Code</strong> para editar o site localmente.</li>
-        <li>Adicione um <code>README.md</code> bem escrito para descrever o projeto no GitHub.</li>
-        <li>Use ações do GitHub (GitHub Actions) para automatizar deploys e testes.</li>
-      </ul>
+    <!-- SOBRE -->
+    <section id="sobre" class="py-24 sm:py-32 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+          <div class="lg:col-span-4">
+            <p class="text-sm font-semibold text-lime mb-3">01 / SOBRE</p>
+            <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Pensar antes de automatizar.</h2>
+          </div>
+          <div class="lg:col-span-8 lg:pt-8">
+            <p class="text-2xl sm:text-3xl leading-relaxed text-zinc-300 font-display">
+              Meu trabalho parte de uma ideia simples: tecnologia só ganha valor quando amplia a capacidade humana de <span class="text-white">entender, criar e decidir melhor</span>.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-6 mt-10 text-zinc-400 leading-relaxed">
+              <p>Na sala de aula, em projetos ou em conteúdo, conecto fundamentos de marketing e comunicação às transformações provocadas por dados, automação e inteligência artificial.</p>
+              <p>O foco não é correr atrás de cada nova ferramenta. É compreender comportamento, contexto, estratégia e os impactos reais de cada escolha.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    <section>
-      <h2>Quiz sobre E-commerce</h2>
-      <p>Teste seus conhecimentos com nosso <a href="quiz.html">quiz interativo</a>.</p>
+
+
+    <!-- ATUAÇÃO -->
+    <section id="atuacao" class="py-24 sm:py-32 bg-white/[.025] border-y border-white/10">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-12">
+          <div>
+            <p class="text-sm font-semibold text-lime mb-3">02 / ATUAÇÃO</p>
+            <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Onde as ideias viram trabalho.</h2>
+          </div>
+          <p class="text-zinc-500 max-w-md">Experiência aplicada a negócios, educação e comunicação digital.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <article class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-lime/40">
+            <svg class="w-7 h-7 text-lime mb-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M12 13h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1"/><path d="M12 8h8"/><path d="M16 8V5a2 2 0 0 1 2-2"/><circle cx="16" cy="13" r=".5"/><circle cx="18" cy="3" r=".5"/><circle cx="20" cy="21" r=".5"/><circle cx="20" cy="8" r=".5"/></svg>
+            <h3 class="font-display text-2xl font-semibold">IA & Estratégia</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Uso crítico e aplicado de IA generativa, automação e dados para comunicação, produtividade e tomada de decisão.</p>
+          </article>
+
+          <article class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-electric/50">
+            <svg class="w-7 h-7 text-electric mb-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"/><path d="M8 6v8"/></svg>
+            <h3 class="font-display text-2xl font-semibold">Marketing Digital</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Estratégia de presença digital, conteúdo, mídia, SEO, SEM e construção de posicionamento para marcas e projetos.</p>
+          </article>
+
+          <article class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-white/30">
+            <svg class="w-7 h-7 text-zinc-200 mb-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+            <h3 class="font-display text-2xl font-semibold">Educação</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Ensino superior, formação profissional, palestras e desenvolvimento de experiências de aprendizagem conectadas ao mercado.</p>
+          </article>
+
+          <article class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-lime/40">
+            <svg class="w-7 h-7 text-lime mb-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="7" x="3" y="3" rx="1"/><rect width="9" height="7" x="3" y="14" rx="1"/><rect width="5" height="7" x="16" y="14" rx="1"/></svg>
+            <h3 class="font-display text-2xl font-semibold">Design & UX</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Projetos digitais com atenção à arquitetura da informação, usabilidade, comunicação visual e experiência do usuário.</p>
+          </article>
+
+          <article class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-electric/50">
+            <svg class="w-7 h-7 text-electric mb-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/><path d="M8 10v4"/><path d="M12 10v2"/><path d="M16 10v6"/></svg>
+            <h3 class="font-display text-2xl font-semibold">Projetos</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Planejamento, organização e condução de iniciativas digitais, educacionais e de comunicação do conceito à entrega.</p>
+          </article>
+
+          <article class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-white/30">
+            <svg class="w-7 h-7 text-zinc-200 mb-12" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"/></svg>
+            <h3 class="font-display text-2xl font-semibold">Conteúdo & Palestras</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Conteúdo sobre marketing, comportamento, tecnologia e IA para transformar temas complexos em conversas úteis.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="materiais" class="py-24 sm:py-32 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <p class="text-sm font-semibold text-lime mb-3">03 / APRENDA COM JOSÉ TELMO</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Repertório para colocar em prática.</h2>
+        <p class="mt-5 text-zinc-400 max-w-2xl leading-relaxed">Guias, atividades e experiências que conectam marketing, educação e tecnologia. Escolha um tema para começar.</p>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 mt-10">
+          <a href="/guia/" class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-lime/40">
+            <span class="text-xs font-semibold text-lime">GUIA · EDUCAÇÃO E IA</span>
+            <h3 class="font-display text-2xl font-semibold mt-5">IA para avaliação, engajamento e aprendizagem</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Um guia prático para conectar inteligência artificial e trabalho docente.</p>
+            <span class="inline-flex items-center gap-2 mt-7 text-sm text-lime">Acessar material <svg class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
+          </a>
+          <a href="/nanobanana/" class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-lime/40">
+            <span class="text-xs font-semibold text-lime">GUIA VISUAL · IA GENERATIVA</span>
+            <h3 class="font-display text-2xl font-semibold mt-5">O livro do Nano Banana Pro</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Técnicas de prompt e exemplos para explorar a criação de imagens.</p>
+            <span class="inline-flex items-center gap-2 mt-7 text-sm text-lime">Acessar material <svg class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
+          </a>
+          <a href="/espm/" class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-lime/40">
+            <span class="text-xs font-semibold text-lime">EXPERIÊNCIA · ENERGIA</span>
+            <h3 class="font-display text-2xl font-semibold mt-5">Matriz BR.ai</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Uma experiência sobre energia e sustentabilidade no Brasil.</p>
+            <span class="inline-flex items-center gap-2 mt-7 text-sm text-lime">Acessar material <svg class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
+          </a>
+          <a href="/quiz.html" class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-lime/40">
+            <span class="text-xs font-semibold text-lime">QUIZ · MARKETING</span>
+            <h3 class="font-display text-2xl font-semibold mt-5">Teste seus conhecimentos de e-commerce</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Uma atividade interativa para revisar conceitos.</p>
+            <span class="inline-flex items-center gap-2 mt-7 text-sm text-lime">Acessar material <svg class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
+          </a>
+          <a href="/github-pages/" class="card rounded-3xl border border-white/10 bg-ink/60 p-7 hover:border-lime/40">
+            <span class="text-xs font-semibold text-lime">TUTORIAL · WEBDESIGN</span>
+            <h3 class="font-display text-2xl font-semibold mt-5">Crie seu site com GitHub Pages</h3>
+            <p class="mt-3 text-zinc-400 leading-relaxed">Vantagens e passos para publicar um site com domínio próprio.</p>
+            <span class="inline-flex items-center gap-2 mt-7 text-sm text-lime">Acessar material <svg class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- REDES -->
+    <section class="py-24 sm:py-32 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <p class="text-sm font-semibold text-lime mb-3">04 / CONECTE-SE</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight max-w-3xl">Três canais, conversas diferentes.</h2>
+
+        <div class="grid md:grid-cols-3 gap-4 mt-12">
+          <a href="https://linkedin.com/in/josetelmo" target="_blank" rel="noopener noreferrer" class="card group rounded-3xl border border-white/10 p-7 min-h-64 flex flex-col justify-between hover:bg-[#0a66c2] hover:border-transparent">
+            <div class="flex items-center justify-between">
+              <svg class="w-7 h-7" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-7M11 13c0-4 6-4 6 0v4"/></svg>
+              <svg class="w-5 h-5 text-zinc-500 group-hover:text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </div>
+            <div>
+              <h3 class="font-display text-2xl font-semibold">LinkedIn</h3>
+              <p class="mt-2 text-zinc-500 group-hover:text-white/80 transition">Artigos, reflexões, mercado, educação e inteligência artificial.</p>
+              <span class="inline-block mt-5 text-sm text-zinc-400 group-hover:text-white">/in/josetelmo</span>
+            </div>
+          </a>
+
+          <a href="https://instagram.com/josetelmo" target="_blank" rel="noopener noreferrer" class="card group rounded-3xl border border-white/10 p-7 min-h-64 flex flex-col justify-between hover:bg-fuchsia-600 hover:border-transparent">
+            <div class="flex items-center justify-between">
+              <svg class="w-7 h-7" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+              <svg class="w-5 h-5 text-zinc-500 group-hover:text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </div>
+            <div>
+              <h3 class="font-display text-2xl font-semibold">Instagram</h3>
+              <p class="mt-2 text-zinc-500 group-hover:text-white/80 transition">Bastidores, referências, ideias rápidas e recortes do cotidiano profissional.</p>
+              <span class="inline-block mt-5 text-sm text-zinc-400 group-hover:text-white">@josetelmo</span>
+            </div>
+          </a>
+
+          <a href="https://youtube.com/josetelmo" target="_blank" rel="noopener noreferrer" class="card group rounded-3xl border border-white/10 p-7 min-h-64 flex flex-col justify-between hover:bg-red-600 hover:border-transparent">
+            <div class="flex items-center justify-between">
+              <svg class="w-7 h-7" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3Z"/></svg>
+              <svg class="w-5 h-5 text-zinc-500 group-hover:text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </div>
+            <div>
+              <h3 class="font-display text-2xl font-semibold">YouTube</h3>
+              <p class="mt-2 text-zinc-500 group-hover:text-white/80 transition">Vídeos para aprofundar temas, aulas, análises e conteúdos de tecnologia e marketing.</p>
+              <span class="inline-block mt-5 text-sm text-zinc-400 group-hover:text-white">/josetelmo</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contato" class="py-24 sm:py-36">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[.045] p-8 sm:p-14 lg:p-20">
+          <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-lime/10 blur-3xl"></div>
+          <div class="relative max-w-4xl">
+            <p class="text-sm font-semibold text-lime mb-5">VAMOS CONVERSAR</p>
+            <h2 class="font-display text-4xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-[-0.04em] font-bold">
+              Tem uma ideia, projeto, aula ou desafio para tirar do papel?
+            </h2>
+            <p class="mt-6 text-lg text-zinc-400 max-w-2xl">A melhor porta de entrada é o LinkedIn. Me envie uma mensagem e conte o contexto.</p>
+            <a href="https://linkedin.com/in/josetelmo" target="_blank" rel="noopener noreferrer" class="mt-9 inline-flex items-center gap-2 rounded-full bg-white text-black px-6 py-3.5 font-semibold hover:bg-lime transition">
+              Falar comigo no LinkedIn <svg class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
-  <footer>
-    <p>Desenvolvido por José Telmo - 2025</p>
+
+  <footer class="border-t border-white/10 py-8">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-zinc-600">
+      <p>© <span id="year">2026</span> José Telmo. Todos os direitos reservados.</p>
+      <div class="flex items-center gap-5">
+        <a href="https://linkedin.com/in/josetelmo" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">LinkedIn</a>
+        <a href="https://instagram.com/josetelmo" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Instagram</a>
+        <a href="https://youtube.com/josetelmo" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">YouTube</a>
+      </div>
+    </div>
   </footer>
+
+  <script src="/assets/site.js" defer></script>
 </body>
 </html>
+

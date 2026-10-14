@@ -1,0 +1,10 @@
+{
+  "name": "aprenda-com-jose-telmo",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.cjs -i styles/input.css -o assets/site.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}
